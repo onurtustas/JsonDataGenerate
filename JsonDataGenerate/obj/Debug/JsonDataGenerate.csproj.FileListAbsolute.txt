@@ -1,0 +1,12 @@
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\bin\Debug\JsonDataGenerate.exe.config
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\bin\Debug\JsonDataGenerate.exe
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\bin\Debug\JsonDataGenerate.pdb
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\bin\Debug\Newtonsoft.Json.dll
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\bin\Debug\Newtonsoft.Json.xml
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\obj\Debug\JsonDataGenerate.csprojResolveAssemblyReference.cache
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\obj\Debug\JsonDataGenerate.Form1.resources
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\obj\Debug\JsonDataGenerate.Properties.Resources.resources
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\obj\Debug\JsonDataGenerate.csproj.GenerateResource.Cache
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\obj\Debug\JsonDataGenerate.csproj.CoreCompileInputs.cache
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\obj\Debug\JsonDataGenerate.exe
+C:\Users\onur\source\repos\JsonDataGenerate\JsonDataGenerate\obj\Debug\JsonDataGenerate.pdb
