@@ -112,7 +112,7 @@ namespace JsonDataGenerate
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(30, 30);
             this.AutoScrollMinSize = new System.Drawing.Size(30, 30);
-            this.ClientSize = new System.Drawing.Size(645, 266);
+            this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);

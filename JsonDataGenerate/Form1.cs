@@ -106,6 +106,7 @@ namespace JsonDataGenerate
                     JsonSerializer serializer = new JsonSerializer();
                     serializer.Serialize(file, objList);
                 }
+                System.Windows.Forms.MessageBox.Show("Json Generate Succeed. File path :"+ path);
 
             }
             catch (Exception)
