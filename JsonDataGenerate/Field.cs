@@ -10,8 +10,8 @@ namespace JsonDataGenerate
     {
         public string FieldName { get; set; }
         public Type FieldType { get; set; }
-        public int Min { get; set; }
-        public int Max { get; set; }
+        public long Min { get; set; }
+        public long Max { get; set; }
 
     }
 }

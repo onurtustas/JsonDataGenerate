@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
@@ -34,6 +35,8 @@ namespace JsonDataGenerate
         {
             try
             {
+                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://somewhere.com/client.php?locationID=1");
+                //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
                 List<Field> fields = new List<Field>();
 
@@ -52,9 +55,9 @@ namespace JsonDataGenerate
                     }
                     else if (combo[0].Text.ToLower() == "ınteger")
                     {
-                        field.FieldType = typeof(int);
-                        field.Min = Convert.ToInt32(minVal[0].Text);
-                        field.Max = Convert.ToInt32(maxVal[0].Text);
+                        field.FieldType = typeof(long);
+                        field.Min = Convert.ToInt64(minVal[0].Text);
+                        field.Max = Convert.ToInt64(maxVal[0].Text);
                     }
                     else if (combo[0].Text.ToLower() == "date")
                     {
@@ -74,12 +77,13 @@ namespace JsonDataGenerate
 
                     foreach (PropertyInfo propertyInfo in myObject.GetType().GetProperties())
                     {
+                        int y = 0;
                         var prop = propertyInfo.ToString().Split(' ');
                         var propName = prop[1];
 
                         if (propertyInfo.ToString().Contains("Int"))
                         {
-                            propertyInfo.SetValue(myObject, RandomNumber(rnd, fields[i].Min, fields[i].Max));
+                            propertyInfo.SetValue(myObject, RandomNumber(rnd, fields[y].Min, fields[y].Max));
                         }
                         else if (propertyInfo.ToString().Contains("String"))
                         {
@@ -94,7 +98,7 @@ namespace JsonDataGenerate
                         {
                             propertyInfo.SetValue(myObject, RandomDay(rnd));
                         }
-
+                        y++;
                     }
 
                     objList.Add(myObject);
@@ -109,10 +113,10 @@ namespace JsonDataGenerate
                 System.Windows.Forms.MessageBox.Show("Json Generate Succeed. File path :"+ path);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Json Generate Failed");
-                Application.Exit();
+                //Application.Exit();
             }
         }
 
@@ -137,9 +141,10 @@ namespace JsonDataGenerate
                  .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        private static int RandomNumber(Random rnd, int min, int max)
+        private static long RandomNumber(Random rnd, long min, long max)
         {
-            int number = rnd.Next(min, max);
+            long number = min + (long)(rnd.NextDouble() * (max - min));
+            //var strNumber = number.ToString();
             return number;
         }
 
