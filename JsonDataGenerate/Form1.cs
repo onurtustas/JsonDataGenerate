@@ -184,6 +184,7 @@ namespace JsonDataGenerate
                     comboBox1.DisplayMember = "Value";
                     comboBox1.ValueMember = "Key";
                     comboBox1.DataSource = new BindingSource(GetDataSource(), null);
+                    comboBox1.SelectedIndexChanged += new EventHandler(this.comboBox1_selectedIndexChange);
 
                     var columnNameDynamic = new System.Windows.Forms.TextBox();
                     columnNameDynamic.Location = new System.Drawing.Point(250, ylock);
@@ -196,12 +197,14 @@ namespace JsonDataGenerate
                     numberRangeDynamic.Name = "textboxDynamicZoneFirst" + i.ToString();
                     numberRangeDynamic.Size = new Size(80, 20);
                     numberRangeDynamic.TabIndex = 10;
+                    numberRangeDynamic.Visible = false;
 
                     var numberRangeDynamicSec = new System.Windows.Forms.TextBox();
                     numberRangeDynamicSec.Location = new System.Drawing.Point(600, ylock);
                     numberRangeDynamicSec.Name = "textboxDynamicZoneSecond" + i.ToString();
                     numberRangeDynamicSec.Size = new Size(80, 20);
                     numberRangeDynamicSec.TabIndex = 11;
+                    numberRangeDynamicSec.Visible = false;
 
                     ylock += 30;
 
@@ -227,6 +230,19 @@ namespace JsonDataGenerate
 
         }
 
+        private void comboBox1_selectedIndexChange(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Convert.ToInt32(columnCount); i++)
+            {
+                var combo = this.Controls.Find("comboBox" + i.ToString(), true);
+                var minVal = this.Controls.Find("textboxDynamicZoneFirst" + i.ToString(), true);
+                var maxVal = this.Controls.Find("textboxDynamicZoneSecond" + i.ToString(), true);
+
+                minVal[0].Visible = combo[0].Text.ToLower() == "ınteger" ? true : false;
+                maxVal[0].Visible = combo[0].Text.ToLower() == "ınteger" ? true : false;
+
+            }
+        }
         private Dictionary<int, string> GetDataSource()
         {
             Dictionary<int, string> comboSrc = new Dictionary<int, string>();
@@ -273,7 +289,7 @@ namespace JsonDataGenerate
         {
             FieldBuilder fieldBuilder = tb.DefineField("_" + propertyName, propertyType, FieldAttributes.Private);
 
-            PropertyBuilder propertyBuilder = tb.DefineProperty(propertyName,  System.Reflection.PropertyAttributes.HasDefault,
+            PropertyBuilder propertyBuilder = tb.DefineProperty(propertyName, System.Reflection.PropertyAttributes.HasDefault,
                 propertyType, null);
             MethodBuilder getPropMthdBldr = tb.DefineMethod("get_" + propertyName,
                 MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.HideBySig, propertyType,
